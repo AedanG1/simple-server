@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     }
 
     // convert IP Address to string
-    inet_ntop(p->ai_family, &addr, ip_string, INET6_ADDRSTRLEN);
+    inet_ntop(p->ai_family, addr, ip_string, INET6_ADDRSTRLEN);
     printf("IP Address: %s, %s\n", ipver, ip_string);
   }
 
