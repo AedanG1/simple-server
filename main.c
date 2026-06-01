@@ -9,9 +9,10 @@
 
 int main(int argc, char *argv[]) {
   int status;
-  struct addrinfo hints, *res, *p;
+  struct addrinfo hints = {0}; // zeroes out all values, replacing memset
+  struct addrinfo *res = NULL;
+  struct addrinfo *p = NULL;
   char ip_string[INET6_ADDRSTRLEN];
-  memset(&hints, 0, sizeof hints);
   hints.ai_family = AF_UNSPEC;     // either ipv4 or 6
   hints.ai_socktype = SOCK_STREAM; // TCP
 
