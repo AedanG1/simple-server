@@ -78,14 +78,11 @@ int main(void) {
       perror("server: accept"); 
       continue;
     }
-    if (!fork()) { // this is the child process
-        close(sockfd); // child doesn't need the listener
-        if (send(client_connection_fd, "You've successfully connected to 127.0.0.1:4321!", 48, 0) == -1)
-            perror("send");
-        close(client_connection_fd);
-        exit(0);
+    if (send(client_connection_fd, "You've successfully connected to 127.0.0.1:4321!", 48, 0) == -1) {
+      perror("send");
+      continue;
     }
-    close(client_connection_fd);  // parent doesn't need this
+    close(client_connection_fd);
   }
 
   return 0;
