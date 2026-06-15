@@ -80,7 +80,7 @@ int main(void) {
     }
     if (!fork()) { // this is the child process
         close(sockfd); // child doesn't need the listener
-        if (send(client_connection_fd, "Hello, world!", 13, 0) == -1)
+        if (send(client_connection_fd, "You've successfully connected to 127.0.0.1:4321!", 48, 0) == -1)
             perror("send");
         close(client_connection_fd);
         exit(0);
